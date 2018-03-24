@@ -1,0 +1,40 @@
+{
+  "name": "orderbooks",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "eslint-plugin-react": "^7.6.1",
+    "prop-types": "latest",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-highcharts": "^16.0.2",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "^1.1.0",
+    "react-select": "^1.2.1",
+    "react-select-input": "^0.1.1",
+    "recharts": "^1.0.0-beta.9",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "3.2.1",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "create-react-app-sass": "^1.1.0",
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "react-scripts": "^1.1.1",
+    "testcafe": "^0.18.6",
+    "testcafe-react-selectors": "^1.0.5"
+  },
+  "scripts": {
+    "start": "PORT=3000 react-scripts-with-sass start",
+    "start:old": "PORT=3000 react-scripts start",
+    "build": "react-scripts-with-sass build",
+    "eject": "react-scripts eject",
+    "eslint": "eslint --fix 'src/**/*.js'",
+    "test": "testcafe chrome src/test/*.test.js"
+  }
+}

@@ -1,0 +1,19 @@
+version: "2.2"
+services:
+  app:
+    container_name: app
+    restart: always
+    build: .
+    ports:
+      - "5000:9999"
+    links:
+      - mongo
+    environment:
+      - DB_URI=mongodb://mongo:27017/local
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - ./mongodb:/mongodb/data
+    ports:
+      - "27021:27017"

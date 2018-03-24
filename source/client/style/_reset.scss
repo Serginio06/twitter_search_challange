@@ -1,0 +1,53 @@
+
+#tooltip {
+  .tooltip-inner {
+
+    strong {
+      font-size: 10px;
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+label {
+  font-weight: normal; // overwrite bootstrap label css property
+}
+
+.input__checkbox-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 100%;
+
+  .input__checkbox {
+    width: 55%;
+  }
+}
+
+.pac-container {
+  width: 305px !important;
+
+  .pac-item {
+    text-overflow: clip !important;
+    overflow-x: scroll !important;
+  }
+}
+
+// re-write bootstrap checkbox style
+.checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+  margin-left: 0;
+}
+
+.modal-dialog {
+  width: 100%;
+  margin: 30px auto;
+}
+
+.modal-content {
+  min-width: 320px;
+}
+
+//@media only screen and (max-width: $media__max-width) {
+//
+//}
