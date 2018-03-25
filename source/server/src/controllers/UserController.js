@@ -1,7 +1,7 @@
 import {getLoggerForFile, stringify} from "../util/loggerUtil";
 import {ModelLocator} from "../models/ModelLocator";
 import {AUTH_ERROR} from "../constants/serverErrorCode";
-import {getUserInfo} from "../converter/serverEntity";
+// import {getUserInfo} from "../converter/serverEntity";
 
 const logger = getLoggerForFile(__filename);
 

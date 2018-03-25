@@ -83,6 +83,7 @@
     "source-map-loader": "^0.2.3",
     "source-map-support": "^0.5.4",
     "style-loader": "^0.19.1",
+    "twitter": "^1.7.1",
     "url-loader": "^0.6.2",
     "webpack": "^3.10.0"
   },

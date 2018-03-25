@@ -3,6 +3,7 @@ export const BAD_REQUEST = "BAD_REQUEST";
 // export const DUPLICATE_ENTRY = "DUPLICATE_ENTRY";
 // export const NOT_UNIQUE = "NOT_UNIQUE";
 export const AUTH_ERROR = "AUTH_ERROR";
+export const TWITTER_ERROR = "TWITTER_ERROR";
 export const FACEBOOK_ID_NOT_FOUND = "FACEBOOK_ID_NOT_FOUND";
 
 export const FACEBOOK_ID_NOT_UNIQUE = "FACEBOOK_ID_NOT_UNIQUE";

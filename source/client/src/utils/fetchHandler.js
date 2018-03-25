@@ -1,6 +1,6 @@
 import { ACTION_APP_SERVER_ERROR, ACTION_APP_DATA_ERROR } from '../store/actions/tradesAction';
 
-function fetchData(dispatch, url) {
+export function fetchData(dispatch, url) {
   return fetch(url)
     .then((res) => {
       if (res.ok) {
@@ -32,4 +32,21 @@ function fetchData(dispatch, url) {
     });
 }
 
-export default fetchData;
+export function getFetchInitProps(body) {
+    let res = {
+        method: "POST",
+        mode: "same-origin",
+        credentials: "include",
+        headers: new Headers({
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        }),
+    };
+
+    if (body) {
+        res.body = body;
+    }
+    return res;
+}
+
+// export default fetchData;

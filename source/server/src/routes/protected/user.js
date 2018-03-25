@@ -9,7 +9,7 @@ module.exports = function (app,middleware) {
     app.get('/loadUserInfo', middleware, function (req, res, next) {
         logger.info(`[${req.identifier}][loadUserInfo] Attempt to load user info.\nRequest body: ${stringify(req.body)}`);
 
-        const resolvePublic = req.body.resolvePublic;
+        // const resolvePublic = req.body.resolvePublic;
 
         return controller.loadUserInfo(req.session.userId)
             .then((userInfo) => {

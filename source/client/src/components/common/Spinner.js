@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './spinner.css';
+import './spinner.scss';
 let spinnerTransparentBG = require ("./../../../resources/images/spinnerTransparentBG.gif");
 
 const Spinner = ({ isActive }) => (

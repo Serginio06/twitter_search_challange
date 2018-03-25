@@ -12,16 +12,16 @@ module.exports = function (app, middleware) {
         logger.info(`[${req.identifier}][login] Attempt to login.\nRequest body: ${stringify(req.body)}`);
 
 
-        // console.log("req.body=", req.body);
-
         // check that user is not signed in
         if (req.session && req.session.userId) {
             logger.error(`User was signed in `);
 
-            res.json({
-                success: false,
-                errorCode: BAD_REQUEST,
-            });
+            // res.json({
+            //     success: false,
+            //     errorCode: BAD_REQUEST,
+            // });
+
+            res.redirect("/");
 
             next();
             return;
@@ -43,25 +43,12 @@ module.exports = function (app, middleware) {
             return;
         }
 
-        // console.log("try to login=");
-        // console.log("email=",email);
-
         controller.login(email, password)
             .then((signinResult) => {
 
-                // if (signinResult) {
-                //
-                // }
-                console.log("signinResult=", signinResult);
-
                 req.session.userId = signinResult._id;
 
-                // if (!keepLogged) {
-                //     req.session.cookie.expires = null;
-                // }
-
                 res.cookie("userEmail", signinResult.email);
-
                 res.json({
                     success: true,
                     payload: signinResult.email,
@@ -73,31 +60,27 @@ module.exports = function (app, middleware) {
                     errorCode: err.message,
                 });
             })
-            .then(() => {
-                next();
-            });
-    })
-}
+    });
 
-// logout(req, res, next) {
-//     logger.info(`[${req.identifier}][logout] Attempt to logout.`);
-//
-//     try {
-//         req.session.destroy(() => {
-//         });
-//
-//         res.json({
-//             success: true,
-//         });
-//     } catch (err) {
-//         res.json({
-//             success: false,
-//             errorCode: err.message,
-//         });
-//     } finally {
-//         next();
-//     }
-// }
+
+    app.post('/logout', middleware, function (req, res) {
+        logger.info(`[logout] Attempt to logout.`);
+
+        try {
+            req.session.destroy(() => {
+            });
+
+            res.json({
+                success: true,
+            });
+        } catch (err) {
+            res.json({
+                success: false,
+                errorCode: err.message,
+            });
+        }
+    })
+};
 
 // loginViaFacebook(req, res, next) {
 //     logger.info(`[${req.identifier}][loginViaFacebook] Attempt to login via Facebook.\nRequest body: ${stringify(req.body)}`);
@@ -169,25 +152,6 @@ module.exports = function (app, middleware) {
 //                 success: false,
 //                 errorCode: err.message,
 //             });
-//         });
-// },
-
-// "recover/:userId/:hash": function (req, res, next) {
-//     logger.info(`[${req.identifier}][recover] attempt to recover user pass`);
-//
-//     const userId = req.params.userId;
-//     const hash = req.params.hash;
-//
-//     return controller.recoverUserPass(userId, hash, req.identifier)
-//         .then(() => {
-//             logger.info(`[${req.identifier}][recover] user pass recovered successfully`);
-//
-//             req.session.userId = userId;
-//
-//             res.redirect(301, "/password");
-//         })
-//         .then(() => {
-//             next();
 //         });
 // },
 

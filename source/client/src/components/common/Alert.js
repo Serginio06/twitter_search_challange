@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './alert.css';
+import './alert.scss';
 
 const Alert = ({ bootstrapClass, msg }) => (
   <div className={`col-xs-12 alert ${bootstrapClass}`} style={{ margin: 10 }}>

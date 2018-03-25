@@ -18,46 +18,51 @@
     </style>
 </head>
 <body>
-<div id="fb-root"></div>
+
 <noscript>You need to enable JavaScript to run this app.</noscript>
 
-<div class="modal-dialog">
+<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="false" id="myModal">
+    <div class="modal-dialog" role="document">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Login or Sign up</h4>
-        </div>
-        <div class="modal-body">
-            <!--<form>-->
-            <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="InputEmail"
-                       aria-describedby="emailHelp" placeholder="Enter email">
-                <small id="emailHelp" class="form-text text-muted">We'll never share your email with
-                    anyone else.
-                </small>
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Login or Sign up</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="InputPassword"
-                       placeholder="Password">
+            <div class="modal-body">
+                <!--<form>-->
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" id="InputEmail"
+                           aria-describedby="emailHelp" placeholder="Enter email">
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email
+                        with
+                        anyone else.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="InputPassword"
+                           placeholder="Password">
+                </div>
+                <button type="button" class="btn btn-primary" onclick=loginAction()>Login</button>
+                <button type="button" class="btn btn-primary" onclick=signupAction()>Sign up
+                </button>
+                <!--</form>-->
             </div>
-            <button type="button" class="btn btn-primary" onclick=loginAction()>Login</button>
-            <button type="button" class="btn btn-primary" onclick=signupAction()>Sign up</button>
-            <!--</form>-->
-        </div>
-        <div class="modal-footer">
+            <div class="modal-footer">
 
-            <div class="hiddenBlock" id="alertDialog">
-                <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+                <div class="hiddenBlock" id="alertDialog" role="alert">
+                    <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+                </div>
             </div>
         </div>
+
     </div>
-
 </div>
-
 
 </body>
 
@@ -137,7 +142,7 @@
                 el.className = "alert alert-danger";
                 break;
             case 'AUTH_ERROR':
-                el.innerHTML = "No such user. Please check your email and password and try again";
+                el.innerHTML = "No such email/password. Please check your email and password and try again";
                 el.className = "alert alert-danger";
                 break;
             case 'BAD_REQUEST':
@@ -149,5 +154,11 @@
                 el.className = "alert alert-danger";
         }
     }
+
+
+        $(window).on('load',function(){
+        $('#myModal').modal('show');
+    });
+
 </script>
 </html>

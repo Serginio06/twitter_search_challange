@@ -9,10 +9,8 @@ export class ModelLocator {
     _userModel;
     _verificationCodeModel;
 
-
     constructor(dbInstance) {
         this._dbInstance = dbInstance;
-
         this._userModel = null;
         this._verificationCodeModel = null;
 
@@ -31,13 +29,5 @@ export class ModelLocator {
         }
 
         return this._userModel;
-    }
-
-    getVerificationCodeModel() {
-        if (this._verificationCodeModel === null) {
-            this._verificationCodeModel = new VerificationCodeModel(this._dbInstance);
-        }
-
-        return this._verificationCodeModel;
     }
 }

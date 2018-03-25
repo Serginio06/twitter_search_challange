@@ -1,43 +1,27 @@
-export const getFormatedDate = () => {
-  const offset = new Date().getTimezoneOffset();
-  let today = new Date();
 
-  today.setMinutes(today.getMinutes() - offset);
-  today = today.toISOString().slice(0, -1).replace(/T/, ' ');
+import {getFetchInitProps} from "./fetchHandler"
 
-  return today;
-};
+export function logout() {
+    const url = "/logout";
+    // const email = document.getElementById('InputEmail').value;
+    // const password = document.getElementById('InputPassword').value;
 
-// export default getFormatedDate;
+    fetch(url, getFetchInitProps(JSON.stringify({})))
+        .then(res => res.json())
+        .then(res => {
 
+            console.log("logout res=",res);
 
-// this function take array of objects where one of the property px need to be transform from
-// eurocents to euros (with comma)
-// export const getEuroFromEurocents = (arr) => {
-//   // console.log('arr=', arr);
-//   if (!arr || arr.length === 0) {
-//     return [];
-//   }
-//
-//
-//   const transformedPx = arr.map((item) => {
-//     const obj = Object.assign({}, item);
-//
-//     if (item.px === 0) {
-//       return obj;
-//     }
-//
-//     // if (item.px.toString().slice(-1) === '0') {
-//     //   // console.log('===========');
-//     //   //   obj.px = `${item.px / 100}0`;
-//     //     obj.px = item.px / 100;
-//     //   return obj;
-//     // }
-//
-//     obj.px = item.px / 100;
-//
-//     return obj;
-//   });
-//
-//   return transformedPx;
-// };
+            if (res && res.success) {
+                document.location.href = "/signin";
+            } else {
+                // console.log('loginAction unsuccessful !res=', res);
+                showErrMes(res.errorCode);
+            }
+        })
+        .catch(function (err) {
+            console.error(`loginAction failed! ${err}`);
+            showErrMes(err);
+        });
+
+}

@@ -8,7 +8,7 @@ const ExtractStylePlugin = new ExtractTextPlugin({
     allChunks: true,
 });
 
-let config = require("./config/index.json");
+let config = require("./config/db.js");
 
 process.env.BABEL_ENV = "development";
 process.env.NODE_ENV = "development";
