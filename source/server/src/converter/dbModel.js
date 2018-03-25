@@ -4,22 +4,22 @@ import {getLoggerForFile, stringify, stringifyObj} from "../util/loggerUtil";
 
 const logger = getLoggerForFile(__filename);
 
-export function getUser(firstName, familyName, email, credential, isOnDispatch, reqIdentifier) {
-    logger.info(`[${reqIdentifier}][getUser] Attempt to create user entity.` +
-        `\nfirstName: ${stringify(firstName)}
-         \nfamilyName: ${stringify(familyName)}
-         \nemail: ${stringify(email)}
-         \ncredential: ${stringify(credential)}
-         \nisOnDispatch: ${stringify(isOnDispatch)}`);
-
-    return {
-        name: `${firstName} ${familyName}`,
-        email,
-        verified: false,
-        password: credential,
-        isOnDispatch: !!isOnDispatch,
-    };
-}
+// export function getUser(firstName, familyName, email, credential, isOnDispatch, reqIdentifier) {
+//     logger.info(`[${reqIdentifier}][getUser] Attempt to create user entity.` +
+//         `\nfirstName: ${stringify(firstName)}
+//          \nfamilyName: ${stringify(familyName)}
+//          \nemail: ${stringify(email)}
+//          \ncredential: ${stringify(credential)}
+//          \nisOnDispatch: ${stringify(isOnDispatch)}`);
+//
+//     return {
+//         name: `${firstName} ${familyName}`,
+//         email,
+//         verified: false,
+//         password: credential,
+//         isOnDispatch: !!isOnDispatch,
+//     };
+// }
 
 // export function getCompanyProduct(product2edit, reqIdentifier) {
 //     logger.info(`[${reqIdentifier}] [getCompanyProduct] attempt to create company product entity.
@@ -55,18 +55,18 @@ export function getUser(firstName, familyName, email, credential, isOnDispatch, 
 //     };
 // }
 
-export function getVerificationCode(userId, target, hash, reqIdentifier) {
-    logger.info(`[${reqIdentifier}][getVerificationCode] Attempt to create verification code entity.` +
-        `\nuserId: ${stringify(userId)}
-         \ntarget: ${stringify(target)}
-         \nhash: ${stringify(hash)}`);
-
-    return {
-        userId,
-        target,
-        hash,
-    };
-}
+// export function getVerificationCode(userId, target, hash, reqIdentifier) {
+//     logger.info(`[${reqIdentifier}][getVerificationCode] Attempt to create verification code entity.` +
+//         `\nuserId: ${stringify(userId)}
+//          \ntarget: ${stringify(target)}
+//          \nhash: ${stringify(hash)}`);
+//
+//     return {
+//         userId,
+//         target,
+//         hash,
+//     };
+// }
 
 // export function getCompany(userId, company, reqIdentifier) {
 //     logger.info(`[${reqIdentifier}] [getCompany] Attempt to create company entity.

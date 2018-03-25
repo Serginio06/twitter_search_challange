@@ -6,15 +6,13 @@ import {getUserInfo} from "../converter/serverEntity";
 const logger = getLoggerForFile(__filename);
 
 export class UserController {
-    loadUserInfo(userId, reqIdentifier) {
-        logger.info(`[${reqIdentifier}] [loadUserInfo] attempt to load info about user
-            \nuserId: ${userId}`);
+    loadUserInfo(userId) {
 
         const userModel = ModelLocator.getInstance().getUserModel();
 
         return userModel.findById(userId, reqIdentifier)
             .then((user) => {
-                logger.info(`[${reqIdentifier}] [loadUserInfo] user fetched successfully
+                logger.info(`[loadUserInfo] user fetched successfully
                     \nuser: ${stringify(user)}`);
 
                 if (!user) {
@@ -24,7 +22,7 @@ export class UserController {
                 return Promise.resolve(getUserInfo(user, reqIdentifier));
             })
             .catch((err) => {
-                logger.error(`[${reqIdentifier}] [loadUserInfo] user info loading failed!\n${err}`);
+                logger.error(`[loadUserInfo] user info loading failed!\n${err}`);
 
                 throw err;
             });

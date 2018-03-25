@@ -5,13 +5,13 @@ import {AUTH_ERROR} from "../../constants/serverErrorCode";
 const logger = getLoggerForFile(__filename);
 const controller = new UserController();
 
-module.exports = {
-    loadUserInfo(req, res, next) {
+module.exports = function (app,middleware) {
+    app.get('/loadUserInfo', middleware, function (req, res, next) {
         logger.info(`[${req.identifier}][loadUserInfo] Attempt to load user info.\nRequest body: ${stringify(req.body)}`);
 
         const resolvePublic = req.body.resolvePublic;
 
-        return controller.loadUserInfo(req.session.userId, req.identifier)
+        return controller.loadUserInfo(req.session.userId)
             .then((userInfo) => {
                 res.json({
                     success: true,
@@ -33,5 +33,5 @@ module.exports = {
             .then(() => {
                 next();
             });
-    },
+    });
 };

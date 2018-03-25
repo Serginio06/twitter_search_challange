@@ -4,23 +4,23 @@ import {getLoggerForFile, stringify, stringifyArray, stringifyObj} from "../util
 
 const logger = getLoggerForFile(__filename);
 
-export function getUserCompanyEntity(company, reqIdentifier) {
-    logger.info(`[${reqIdentifier}][getUserCompanyEntity] Attempt to create user company entity.`);
-
-    const completed = !!(company.name
-        && company.description
-        && company.webAddress
-        && company.phone
-        && company.email
-        && company.logo
-        && (company.category && company.category.name)
-        && (company.lat && company.lng && company.locationName));
-
-    return {
-        ...company._doc,
-        completed,
-    };
-}
+// export function getUserCompanyEntity(company, reqIdentifier) {
+//     logger.info(`[${reqIdentifier}][getUserCompanyEntity] Attempt to create user company entity.`);
+//
+//     const completed = !!(company.name
+//         && company.description
+//         && company.webAddress
+//         && company.phone
+//         && company.email
+//         && company.logo
+//         && (company.category && company.category.name)
+//         && (company.lat && company.lng && company.locationName));
+//
+//     return {
+//         ...company._doc,
+//         completed,
+//     };
+// }
 
 // export function getCompanyProductEntity(product, reqIdentifier) {
 //     logger.info(`[${reqIdentifier}][getCompanyProductEntity] Attempt to create company product entity.
@@ -46,88 +46,46 @@ export function getUserCompanyEntity(company, reqIdentifier) {
 //     };
 // }
 
-export function getSigninResultEntity(user, company, reqIdentifier) {
-    logger.info(`[${reqIdentifier}][getSigninResultEntity] Attempt to create signin result entity.` +
-        `\nUser: ${stringify(user)}
-         \nCompany: ${stringifyObj(company)}`);
-
-    return {
-        userName: user.name,
-        userId: user._id,
-        name: company ? company.name : "",
-    };
-}
-
-export function getUserInfo(user, reqIdentifier) {
-    logger.info(`[${reqIdentifier}][getUserInfo] Attempt to create user info entity.` +
-        `\nuser: ${stringify(user)}`);
-
-    return {
-        userName: user.name,
-    };
-}
-
-export function getSigninPayload(signinResult, reqIdentifier) {
-    logger.info(`[${reqIdentifier}][getSigninPayload] Attempt to create signin payload entity.` +
-        `\nsigninResult: ${stringify(signinResult)}`);
-
-    return {
-        userName: signinResult.userName,
-        name: signinResult.name,
-    };
-}
-
-export function getSignupUserResultEntity(user, reqIdentifier) {
-    logger.info(`[${reqIdentifier}][getSignupResultEntity] Attempt to create signup user result entity.` +
-        `\nUser: ${stringify(user)}`);
-
-    return {
-        userName: user.name,
-        userId: user._id,
-    };
-}
-
-export function getPromoEntity(promo, reqIdentifier) {
-    logger.info(`[${reqIdentifier}][getPromoEntity] Attempt to create promo entity
-        \npromo: ${stringify(promo)}`);
-
-    return {
-        createdTimestamp: promo.createdTimestamp,
-        name: promo.name,
-        offerPhrase: promo.offerPhrase,
-        about: promo.about,
-        terms: promo.terms,
-        objective: promo.objective,
-        productId: promo.productId,
-        rewardType: promo.reward.rewardType,
-        separateProductId: promo.reward.rewardId,
-        discount: promo.reward.percentage,
-        type: promo.promoType,
-        condition: promo.condition,
-        quantity: promo.quantityValue,
-        isUnlimitedQuantity: promo.quantityUnlimited,
-        value: promo.value,
-        codes: promo.codes.join("\n"),
-        time2Decide: promo.timeToDecide,
-        age: promo.target.age,
-        gender: promo.target.gender,
-        scheduleType: promo.scheduleType,
-        pricing: promo.pricing,
-        language: promo.target.language,
-        productObject: promo.promoProductObject,
-        locationObj: promo.target.location,
-        budgetPeriod: promo.budgetPeriod,
-        budgetAmount: promo.budgetAmount,
-        finishDateTime: promo.finishDate,
-        startDateTime: promo.startDate,
-        status: promo.status,
-        codeType: promo.codeType,
-        imgCode: promo.promoImgCode,
-        interest: promo.target.interests,
-        _id: promo._id,
-        dataLanguage: promo.dataLanguage,
-    };
-}
+// export function getSigninResultEntity(user, company, reqIdentifier) {
+//     logger.info(`[${reqIdentifier}][getSigninResultEntity] Attempt to create signin result entity.` +
+//         `\nUser: ${stringify(user)}
+//          \nCompany: ${stringifyObj(company)}`);
+//
+//     return {
+//         userName: user.name,
+//         userId: user._id,
+//         name: company ? company.name : "",
+//     };
+// }
+//
+// export function getUserInfo(user, reqIdentifier) {
+//     logger.info(`[${reqIdentifier}][getUserInfo] Attempt to create user info entity.` +
+//         `\nuser: ${stringify(user)}`);
+//
+//     return {
+//         userName: user.name,
+//     };
+// }
+//
+// export function getSigninPayload(signinResult, reqIdentifier) {
+//     logger.info(`[${reqIdentifier}][getSigninPayload] Attempt to create signin payload entity.` +
+//         `\nsigninResult: ${stringify(signinResult)}`);
+//
+//     return {
+//         userName: signinResult.userName,
+//         name: signinResult.name,
+//     };
+// }
+//
+// export function getSignupUserResultEntity(user, reqIdentifier) {
+//     logger.info(`[${reqIdentifier}][getSignupResultEntity] Attempt to create signup user result entity.` +
+//         `\nUser: ${stringify(user)}`);
+//
+//     return {
+//         userName: user.name,
+//         userId: user._id,
+//     };
+// }
 
 // export function getPromoStatistics(promos, promoCards, reqIdentifier) {
 //     logger.info(`[${reqIdentifier}][getPromoCards] Attempt to create company promo cards.` +

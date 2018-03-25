@@ -2,13 +2,152 @@
 <html lang="en">
 <head>
     <% include ./template/head.ejs %>
+    <style>
+        .hiddenBlock {
+            display: none;
+        }
+
+        #alertDialog {
+            /*padding-left: 25px;*/
+            text-align: center;
+        }
+
+        .modal-dialog {
+            min-width: 400px;
+        }
+    </style>
 </head>
 <body>
 <div id="fb-root"></div>
 <noscript>You need to enable JavaScript to run this app.</noscript>
 
-<div id="root"></div>
-<!--<h1>Put here signin code</h1>-->
-<script type="text/javascript" src="/build/js/main.js"></script>
+<div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Login or Sign up</h4>
+        </div>
+        <div class="modal-body">
+            <!--<form>-->
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="InputEmail"
+                       aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with
+                    anyone else.
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="InputPassword"
+                       placeholder="Password">
+            </div>
+            <button type="button" class="btn btn-primary" onclick=loginAction()>Login</button>
+            <button type="button" class="btn btn-primary" onclick=signupAction()>Sign up</button>
+            <!--</form>-->
+        </div>
+        <div class="modal-footer">
+
+            <div class="hiddenBlock" id="alertDialog">
+                <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
 </body>
+
+<script>
+
+    function signupAction() {
+        const url = "/registerUser";
+        const email = document.getElementById('InputEmail').value;
+        const password = document.getElementById('InputPassword').value;
+
+        fetch(url, getFetchInitProps(JSON.stringify({email: email, password: password})))
+            .then(res => res.json())
+            .then(res => {
+
+                if (res && res.success) {
+                    document.location.href = "/";
+                } else {
+                    // console.log('loginAction unsuccessful !res=', res);
+                    showErrMes(res.errorCode);
+                }
+            })
+            .catch(function (err) {
+                console.error(`loginAction failed! ${err}`);
+                showErrMes(err);
+            });
+
+    }
+
+
+    function loginAction() {
+        const url = "/login";
+        const email = document.getElementById('InputEmail').value;
+        const password = document.getElementById('InputPassword').value;
+
+        fetch(url, getFetchInitProps(JSON.stringify({email: email, password: password})))
+            .then(res => res.json())
+            .then(res => {
+
+
+                if (res && res.success) {
+                    document.location.href = "/";
+                } else {
+                    // console.log('loginAction unsuccessful !res=', res);
+                    showErrMes(res.errorCode);
+                }
+            })
+            .catch(function (err) {
+                console.error(`loginAction failed! ${err}`);
+                showErrMes(err);
+            });
+    };
+
+    function getFetchInitProps(body) {
+        let res = {
+            method: "POST",
+            mode: "same-origin",
+            credentials: "include",
+            headers: new Headers({
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            }),
+        };
+
+        if (body) {
+            res.body = body;
+        }
+        return res;
+    }
+
+    function showErrMes(errCode) {
+
+        const el = document.getElementById('alertDialog');
+
+        switch (errCode) {
+            case 'EMAIL_NOT_UNIQUE':
+                el.innerHTML = "User with such email exist. Please try to log in";
+                el.className = "alert alert-danger";
+                break;
+            case 'AUTH_ERROR':
+                el.innerHTML = "No such user. Please check your email and password and try again";
+                el.className = "alert alert-danger";
+                break;
+            case 'BAD_REQUEST':
+                el.innerHTML = "Please, enter valid email and password (more then 3 characters expected)";
+                el.className = "alert alert-danger";
+                break;
+            default:
+                el.innerHTML = "Internal server error. Please try again later"
+                el.className = "alert alert-danger";
+        }
+    }
+</script>
 </html>

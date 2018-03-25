@@ -1,7 +1,5 @@
 import {configureLogger, getLoggerForFile, setRoot} from "./util/loggerUtil";
-// import {configureEmail} from "./util/emailUtil";
 // import cors from "cors";
-import {releaseIdentifierMiddleware} from "./middleware/requestMiddleware";
 import mongoose from "mongoose";
 import path from "path";
 import express from "express";
@@ -33,14 +31,12 @@ ServiceLocator.getInstance()
     .setDomain(config.domain)
     .setPort(config.port);
 
-// Uncomment next line to use nodemail for password recovery
-// configureEmail(config.mail);
-
 // TODO: Allow cors for dev purposes when frontend launched localhost
 // app.use(cors());
 
 
-app.use(bodyParser.urlencoded({
+// app.use(bodyParser.urlencoded({
+app.use(bodyParser.json({
     parameterLimit: 100000,
     limit: "5mb",
     extended: true,
@@ -81,8 +77,6 @@ connection.on("open", () => {
 
     initRoutes(app);
 
-    // Attach unique ID to every request to monitor it's way
-    app.use(releaseIdentifierMiddleware);
 
     app.listen(process.env.PORT || config.port, (err) => {
         if (err) {
@@ -95,5 +89,12 @@ connection.on("open", () => {
             logger.info(`Server is running on port ${config.port}`);
         }
     });
+
+    process.on('error', (err) => {
+
+        console.log("node error=",err);
+    });
 });
+
+
 
