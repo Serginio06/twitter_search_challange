@@ -12,9 +12,6 @@ class TradeTable extends Component {
             tblTitles = Object.keys(tblContent[0]).filter(item => (item === 'created_at' || item === 'text'));
         }
 
-        console.log("'tblTitles=", tblTitles);
-        console.log("'tblContent=", tblContent);
-
         const renderTblHeader =
             tblTitles.map((item, index) => (
                 <th key={index}>{item}</th>

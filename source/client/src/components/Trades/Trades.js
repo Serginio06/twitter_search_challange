@@ -19,12 +19,11 @@ class Trades extends Component {
 
     // ********** HANDLERS **********
     hashtagChanged = ({target: {value: hashtags}}) => {
-        console.log("hashtags=",hashtags);
-    	this.props.hashtagChanged(hashtags);
+        console.log("hashtags=", hashtags);
+        this.props.hashtagChanged(hashtags);
     };
 
     renderInputs = () => (
-        // this.props.tradesPage &&
         <div className="card">
             <div className="card-header">
                 <h5 className='text-primary'>Enter twitter hashtags to search:</h5>
@@ -36,28 +35,28 @@ class Trades extends Component {
                               id="inputGroup-sizing-default">Hashtags</span>
                     </div>
                     <input type="text" className="form-control" aria-label="Default"
-                           aria-describedby="inputGroup-sizing-default" onChange={this.hashtagChanged}/>
+                           aria-describedby="inputGroup-sizing-default"
+                           onChange={this.hashtagChanged}/>
 
                 </div>
-                <button type="button" className="btn btn-primary btn-lg btn-block" onClick={this.searchTweets}>Search</button>
+                <button type="button" className="btn btn-primary btn-lg btn-block"
+                        onClick={this.searchTweets}>Search
+                </button>
             </div>
         </div>
     );
 
     renderTables = () => (this.props.tweets.length > 0 &&
-            <div className="table-ts col-xs-offset-1 col-xs-10">
-                <TradeTable
-                    title={ this.props.hashtags}
-                    tblContent={this.props.tweets}
-                />
-            </div>
+        <div className="table-ts col-xs-offset-1 col-xs-10">
+            <TradeTable
+                title={this.props.hashtags}
+                tblContent={this.props.tweets}
+            />
+        </div>
     );
 
 
     render() {
-
-        console.log("this.props=", this.props);
-
         return (
 
             <div className="jumbotron">
@@ -73,10 +72,6 @@ class Trades extends Component {
                 />
             </div>
         );
-    }
-
-    componentDidMount() {
-        // init local variables here
     }
 }
 

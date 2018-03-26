@@ -13,22 +13,19 @@ import {ACTION_APP_SERVER_ERROR} from "./actions/tradesAction";
 
 const middleware = [thunk];
 
-//TODO(seiv): remove before delivery
-middleware.push(createLogger());
+//TODO(seiv): uncomment for development
 // if (process.env.NODE_ENV === 'dev' || process.env.NODE_ENV === 'development') {
 //   middleware.push(createLogger());
 // }
 
-// console.log("process.env.NODE_ENV=",process.env.NODE_ENV);
-
 function combinedReducer(state = initState, action) {
   switch (action.type) {
     case tradesAction.ACTION_APP_SPINNER_START: return app(state, action);
-    case tradesAction.ACTION_TRADES_GET_DATA: return trades(state, action);
     case tradesAction.ACTION_HASHTAGS_CHANGE: return trades(state, action);
     case tradesAction.ACTION_APP_DATA_ERROR: return trades(state, action);
     case tradesAction.ACTION_APP_SERVER_ERROR: return trades(state, action);
     case tradesAction.ACTION_GET_TWEETS: return trades(state, action);
+    case tradesAction.ACTION_GET_TWEETS_RETURN_EMPTY: return trades(state, action);
 
     default:
       console.error(`Unhandled action! ${action.type}`);
@@ -46,8 +43,6 @@ const store = createStore(
 persistStore(store, {
   whitelist: ['auth'],
 }, () => {
-  // store.dispatch(orderbookAction.getTimestampAction());
-  // store.dispatch(orderbookErrorAction.getTimestampAction());
 });// .purgeAll();
 
 export default store;

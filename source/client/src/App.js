@@ -12,14 +12,10 @@ class App extends Component {
 
         return (
             <div className="container">
-                {/*<header className="row App-header"/>*/}
                 <nav
                     className="navbar navbar-light bg-light justify-content-spacebetween align-items-center">
-
-                    {/*<form className="form-inline justify-content-end align-items-center">*/}
                     <p>You logged with email: <b>{userEmail}</b></p>
                     <button className="btn btn btn-info" onClick={logout}>Logout</button>
-                    {/*</form>*/}
                 </nav>
                 <Route exact path="/" component={MenuContainer}/>
                 <Route path="/trades" component={TradesContainer}/>

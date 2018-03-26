@@ -7,6 +7,7 @@ export const ACTION_APP_SERVER_ERROR = 'ACTION_APP_SERVER_ERROR';
 export const ACTION_APP_DATA_ERROR = 'ACTION_APP_DATA_ERROR';
 export const ACTION_HASHTAGS_CHANGE = 'ACTION_HASHTAGS_CHANGE';
 export const ACTION_GET_TWEETS = 'ACTION_GET_TWEETS';
+export const ACTION_GET_TWEETS_RETURN_EMPTY = 'ACTION_GET_TWEETS_RETURN_EMPTY';
 
 
 export function getDataAction(data) {
@@ -21,23 +22,29 @@ export function getDataAction(data) {
         promise
             .then(res => res.json())
             .then((tweets) => {
-
-                console.log('tweets=', tweets);
-
                 if (tweets && tweets.success) {
 
-                    dispatch({
-                        type: ACTION_GET_TWEETS,
-                        payload: {
-                            tweets: tweets.payload
-                        },
-                    });
+                    if (tweets.payload.length > 0) {
+                        dispatch({
+                            type: ACTION_GET_TWEETS,
+                            payload: {
+                                tweets: tweets.payload
+                            },
+                        });
+                    } else {
+                        dispatch({
+                            type: ACTION_GET_TWEETS_RETURN_EMPTY,
+                            payload: {
+                                tweets: []
+                            },
+                        });
+                    }
+
+
+
                 }
             })
             .catch((err) => {
-
-                console.log("errror1111 1=",);
-
                 dispatch({
                     type: ACTION_APP_DATA_ERROR,
                     payload: {

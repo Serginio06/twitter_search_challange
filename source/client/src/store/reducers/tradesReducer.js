@@ -30,7 +30,11 @@ export default (state, action) => {
             return {
                 ...state,
                 hashtags,
-                tweets
+                tweets,
+                formAlert: {
+                    style: '',
+                    msg: '',
+                },
             };
         case tradesAction.ACTION_APP_DATA_ERROR:
             return {
@@ -48,6 +52,15 @@ export default (state, action) => {
                 formAlert: {
                     style: 'alert-info',
                     msg: 'Cannot connect to the server. Please try again later',
+                },
+            };
+        case tradesAction.ACTION_GET_TWEETS_RETURN_EMPTY:
+            return {
+                ...state,
+                isSpinner: false,
+                formAlert: {
+                    style: 'alert-info',
+                    msg: 'No tweets with these hashtags',
                 },
             };
 
