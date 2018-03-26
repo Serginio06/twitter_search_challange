@@ -47,7 +47,7 @@ export class SignupController {
         // let _user = getUser(firstName, familyName, email, credential, isOnDispatch, reqIdentifier);
         let _user = {email, password:credential};
 
-        console.log("registerUser _user=",_user);
+        // console.log("registerUser _user=",_user);
         // let _hash;
         // let _verificationCode;
 

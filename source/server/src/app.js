@@ -62,7 +62,6 @@ connection.on("error", (err) => {
 // On DB connection open - initialize session, routes and start server
 connection.on("open", () => {
 
-    console.log("open=");
     // Create singleton instance of current DB connection to re-use it in DB models creation
     ModelLocator.getInstance(connection);
 

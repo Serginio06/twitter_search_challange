@@ -9,13 +9,13 @@ module.exports = function (app, middleware) {
         logger.info(`[${req.identifier}][getTweets] Attempt to get tweet .\nRequest body: ${stringify(req.body)}`);
 
 
-        console.log("req.body.hashtags=", req.body.hashtags);
+        // console.log("req.body.hashtags=", req.body.hashtags);
 
         let hashTags = req.sanitize(req.body.hashtags);
 
         return controller.getTweetsByHashtags(hashTags)
             .then((payload) => {
-                console.log("payload=", payload.statuses.length);
+                // console.log("payload=", payload.statuses.length);
 
                 res.json({
                     success: true,

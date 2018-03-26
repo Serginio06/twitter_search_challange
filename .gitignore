@@ -25,6 +25,7 @@ mongodb/
 
 #other
 config/dev-keys.js
+app.yaml
 _old/
 *~
 ._

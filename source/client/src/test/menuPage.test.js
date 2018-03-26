@@ -3,7 +3,7 @@ import ReactSelector from 'testcafe-react-selectors';
 import config from './../config';
 // import Menu from "../components/Menu";
 
-console.log('config =', config);
+// console.log('config =', config);
 
 fixture`menuPage`
   .page(`http://${config.domain}:${config.port}`)

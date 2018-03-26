@@ -1,11 +1,4 @@
-
-// console.log("process.env.DB_URI= ",process.env.DB_URI);
-// const secured = require ('./secured');
-// const DB_URI = process.env.DB_URI;
-
 const keys = require('./index');
-
-    console.log("keys.dbUrl=",keys.dbUrl);
 
 module.exports = {
 
@@ -17,7 +10,7 @@ module.exports = {
 
     "domain": "localhost",
 
-    "port": 9999,
+    "port": 8080,
 
     "session": {
         "secret": keys.sessionSecret,
@@ -28,8 +21,3 @@ module.exports = {
         "resave": true
     },
 };
-
-
-
-
-

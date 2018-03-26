@@ -10,7 +10,7 @@ export function logout() {
         .then(res => res.json())
         .then(res => {
 
-            console.log("logout res=",res);
+            // console.log("logout res=",res);
 
             if (res && res.success) {
                 document.location.href = "/signin";
