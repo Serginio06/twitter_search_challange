@@ -12,6 +12,7 @@ const initState = {
     style: '',
     msg: '',
   },
+    hashtags:''
 
 };
 

@@ -7,15 +7,15 @@ import Trades from './../components/Trades/Trades';
 const mapStateToProps = state => ({ ...state });
 
 const mapDispatchToProps = dispatch => ({
-  handleSubmitData: (data) => {
+  searchTweets: (data) => {
     dispatch(tradesAction.getDataAction(data));
   },
   // handleSubmitTimestamp: (data) => {
   //   dispatch(tradesAction.getTimestampAction(data));
   // },
-  // handleLongNameChanged: (longName) => {
-  //   dispatch(tradesAction.longNameChangedAction(longName));
-  // },
+    hashtagChanged: (value) => {
+    dispatch(tradesAction.hashtagChangedAction(value));
+  },
   // handleTimestampStartChanged: (tsStart) => {
   //   dispatch(tradesAction.timestampStartChangedAction(tsStart));
   // },

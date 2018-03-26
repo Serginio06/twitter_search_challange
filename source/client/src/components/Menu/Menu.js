@@ -15,7 +15,6 @@ class Menu extends Component {
                     <div className="menu-container">
                         <Link id="tradesBtn" to="/trades" className="btn btn-primary">Go to
                             Search</Link>
-
                     </div>
             </div>
         );

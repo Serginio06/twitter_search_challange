@@ -10,16 +10,16 @@ import "./trades.scss"
 class Trades extends Component {
 
     // ********** ACTIONS **********
-    submitData = () => {
-        this.props.handleSubmitData({
-            longName: this.props.tradesPage.longName,
+    searchTweets = () => {
+        this.props.searchTweets({
+            hashtags: this.props.hashtags,
         });
     };
 
     // ********** HANDLERS **********
-    // longNameChanged = ({target: {value: longName}}) => {
-    // 	this.props.handleLongNameChanged(longName);
-    // };
+    hashtagChanged = ({target: {value: hashtags}}) => {
+    	this.props.hashtagChanged( );
+    };
 
     renderInputs = () => (this.props.tradesPage &&
         <div className="card">
@@ -30,11 +30,13 @@ class Trades extends Component {
                 <div className="input-group mb-3">
                     <div className="input-group-prepend">
                         <span className="input-group-text"
-                              id="inputGroup-sizing-default">Hastags</span>
+                              id="inputGroup-sizing-default">Hashtags</span>
                     </div>
                     <input type="text" className="form-control" aria-label="Default"
-                           aria-describedby="inputGroup-sizing-default"/>
+                           aria-describedby="inputGroup-sizing-default" onChange={this.hashtagChanged}/>
+
                 </div>
+                <button type="button" className="btn btn-primary btn-lg btn-block" onClick={this.searchTweets}>Search</button>
             </div>
         </div>
     );
@@ -48,8 +50,6 @@ class Trades extends Component {
 
             <div className="jumbotron">
                 <Spinner isActive={this.props.isSpinner}/>
-                {/*<h1 className="display-5">Hello, world!</h1>*/}
-                {/*<hr className="my-4"/>*/}
 
                 {/*INPUTS*/}
                 {this.renderInputs()}

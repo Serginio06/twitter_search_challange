@@ -9,10 +9,10 @@
     "buildServer": "babel ./ico --out-dir ./build/media --copy-files && babel ./source/server --out-dir ./build/server --copy-files && babel ./config --out-dir ./build/config --copy-files",
     "build": "npm run clean; npm run buildClient; npm run buildServer",
     "nodemonServer": "nodemon ./source/server/src/app.js --exec babel-node --presets env,react --plugins transform-object-rest-spread --watch source/server",
-    "start": "concurrently --kill-others \"npm run start:client\" \"npm run start:server\"",
+    "start": "NODE_ENV=dev concurrently --kill-others \"npm run start:client\" \"npm run start:server\"",
     "start:server": "npm run buildServer && npm run nodemonServer",
     "start:client": "webpack --watch --progress",
-    "dev": "npm run clean; npm run watch; npm run nodemonServer",
+    "start:prod": "NODE_ENV=dev concurrently --kill-others \"npm run start:client\" \"npm run start:server\"",
     "start:old": "npm run clean && npm run buildServer && node build/server/app.js",
     "server": "node ./build/server/src/app.js"
   },

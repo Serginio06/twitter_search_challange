@@ -24,8 +24,7 @@ yarn-error.log*
 mongodb/
 
 #other
-config/secured_PRV.js
-config/secured.js
+config/dev-keys.js
 _old/
 *~
 ._
