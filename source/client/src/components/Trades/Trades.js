@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 // import 'react-select/dist/react-select.css';
 import Spinner from "../common/Spinner";
 import Alert from "../common/Alert";
-import "./trades.scss"
+import "./trades.scss";
+import TradeTable from "./TradeTable";
 
 
 class Trades extends Component {
@@ -18,10 +19,12 @@ class Trades extends Component {
 
     // ********** HANDLERS **********
     hashtagChanged = ({target: {value: hashtags}}) => {
-    	this.props.hashtagChanged( );
+        console.log("hashtags=",hashtags);
+    	this.props.hashtagChanged(hashtags);
     };
 
-    renderInputs = () => (this.props.tradesPage &&
+    renderInputs = () => (
+        // this.props.tradesPage &&
         <div className="card">
             <div className="card-header">
                 <h5 className='text-primary'>Enter twitter hashtags to search:</h5>
@@ -41,6 +44,15 @@ class Trades extends Component {
         </div>
     );
 
+    renderTables = () => (this.props.tweets.length > 0 &&
+            <div className="table-ts col-xs-offset-1 col-xs-10">
+                <TradeTable
+                    title={ this.props.hashtags}
+                    tblContent={this.props.tweets}
+                />
+            </div>
+    );
+
 
     render() {
 
@@ -53,6 +65,9 @@ class Trades extends Component {
 
                 {/*INPUTS*/}
                 {this.renderInputs()}
+
+                {/*TABLES*/}
+                {this.renderTables()}
                 <Alert bootstrapClass={this.props.formAlert.style}
                        msg={this.props.formAlert.msg}
                 />

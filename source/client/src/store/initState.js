@@ -6,13 +6,12 @@
 
 const initState = {
   isSpinner: false,
-    tradesPage:{
-        longName:""},
   formAlert: {
     style: '',
     msg: '',
   },
-    hashtags:''
+    hashtags:'',
+    tweets:[]
 
 };
 

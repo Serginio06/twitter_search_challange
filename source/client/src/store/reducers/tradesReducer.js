@@ -2,31 +2,56 @@ import * as tradesAction from './../actions/tradesAction';
 // import * as constants from './../../constants';
 
 export default (state, action) => {
-  const {
-    tradesPage,
-    formAlert = {
-      style: '',
-      msg: '',
-    },
-  } = action.payload;
+    const {
+        formAlert = {
+            style: '',
+            msg: '',
+        },
+        hashtags,
+        tweets
+    } = action.payload;
 
-  switch (action.type) {
+    switch (action.type) {
 
 
-    case tradesAction.ACTION_TRADES_GET_DATA:
-      return {
-        ...state,
-        tradesPage,
-          formAlert,
-        isSpinner: false,
-      };
-    case tradesAction.ACTION_APP_SPINNER_START:
-      return {
-        ...state,
-        isSpinner: true,
-      };
+        case tradesAction.ACTION_GET_TWEETS:
+            return {
+                ...state,
+                tweets,
+                formAlert,
+                isSpinner: false,
+            };
+        case tradesAction.ACTION_APP_SPINNER_START:
+            return {
+                ...state,
+                isSpinner: true,
+            };
+        case tradesAction.ACTION_HASHTAGS_CHANGE:
+            return {
+                ...state,
+                hashtags,
+                tweets
+            };
+        case tradesAction.ACTION_APP_DATA_ERROR:
+            return {
+                ...state,
+                isSpinner: false,
+                formAlert: {
+                    style: 'alert-info',
+                    msg: 'Error during receiving data from server',
+                },
+            };
+        case tradesAction.ACTION_APP_SERVER_ERROR:
+            return {
+                ...state,
+                isSpinner: false,
+                formAlert: {
+                    style: 'alert-info',
+                    msg: 'Cannot connect to the server. Please try again later',
+                },
+            };
 
-    default:
-      return state;
-  }
+        default:
+            return state;
+    }
 };
