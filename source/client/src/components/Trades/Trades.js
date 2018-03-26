@@ -19,7 +19,7 @@ class Trades extends Component {
 
     // ********** HANDLERS **********
     hashtagChanged = ({target: {value: hashtags}}) => {
-        console.log("hashtags=", hashtags);
+
         this.props.hashtagChanged(hashtags);
     };
 

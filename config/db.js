@@ -5,8 +5,12 @@
 
 const keys = require('./index');
 
+    console.log("keys.dbUrl=",keys.dbUrl);
+
 module.exports = {
-    dbUrl: process.env.DB_URI || 'mongodb://127.0.0.1:27017/local',
+
+    // dbUrl: process.env.DB_URI || 'mongodb://127.0.0.1:27017/local',
+    dbUrl: keys.dbUrl,
 
     // uncomment line below to run with docker-compose
     // "dbUrl": "mongodb://mongo:27017/local",
@@ -23,7 +27,6 @@ module.exports = {
         "saveUninitialized": false,
         "resave": true
     },
-
 };
 
 

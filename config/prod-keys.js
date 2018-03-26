@@ -1,4 +1,8 @@
 module.exports = {
+
+    // connection to mLab mongodb
+    dbUrl: process.env.DB_URI,
+
     // secret for sessions
     sessionSecret: process.env.SESSION_SECRET,
 

@@ -53,6 +53,7 @@ mongoose.Promise = global.Promise;
 
 // Creating connection to DB
 const connection = mongoose.createConnection(config.dbUrl);
+
 connection.on("error", (err) => {
     logger.error(`Connection to DB error!\n${err}`);
     console.log('Please check if mongo launched and accessible');
@@ -61,6 +62,7 @@ connection.on("error", (err) => {
 // On DB connection open - initialize session, routes and start server
 connection.on("open", () => {
 
+    console.log("open=");
     // Create singleton instance of current DB connection to re-use it in DB models creation
     ModelLocator.getInstance(connection);
 
