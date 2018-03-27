@@ -1,7 +1,5 @@
 const keys = require('./index');
 
-console.log("keys.dbUrl=",keys.dbUrl);
-
 module.exports = {
 
     // dbUrl: process.env.DB_URI || 'mongodb://127.0.0.1:27017/local',
