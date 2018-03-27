@@ -5,16 +5,16 @@
     "dbUp": "db-migrate up --config ./config/database.json -e dev",
     "eslint": "eslint ./source/**/*.js* --fix",
     "clean": "rm -rf ./build",
-    "buildClient": "webpack",
+    "buildClient": "webpack --progress",
     "buildServer": "babel ./ico --out-dir ./build/media --copy-files && babel ./source/server --out-dir ./build/server --copy-files && babel ./config --out-dir ./build/config --copy-files",
     "build": "npm run clean; npm run buildClient; npm run buildServer",
     "nodemonServer": "nodemon ./source/server/src/app.js --exec babel-node --presets env,react --plugins transform-object-rest-spread --watch source/server",
-    "start": "NODE_ENV=prod concurrently --kill-others \"npm run start:client\" \"npm run start:server\"",
+    "start": "npm run clean && npm run buildClient && npm run buildServer && NODE_ENV=prod node build/server/src/app.js",
     "start:server": "npm run buildServer && npm run nodemonServer",
     "start:client": "webpack --watch --progress",
     "start:dev": "NODE_ENV=dev concurrently --kill-others \"npm run start:client\" \"npm run start:server\"",
     "start:old": "npm run clean && npm run buildServer && node build/server/app.js",
-    "server": "node ./build/server/src/app.js"
+    "server": "NODE_ENV=dev node ./build/server/src/app.js"
   },
   "repository": {
     "type": "git",
@@ -85,17 +85,17 @@
     "style-loader": "^0.19.1",
     "twitter": "^1.7.1",
     "url-loader": "^0.6.2",
-    "webpack": "^3.10.0"
-  },
-  "devDependencies": {
+    "webpack": "^3.10.0",
+    "concurrently": "^3.5.1",
     "babel-cli": "^6.26.0",
     "babel-plugin-source-map-support": "^2.0.1",
     "babel-plugin-transform-es2015-spread": "^6.22.0",
-    "concurrently": "^3.5.1",
     "eslint": "^4.17.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-babel": "^4.1.2",
-    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-jsx-a11y": "^2.2.3"
+  },
+  "devDependencies": {
     "nodemon": "^1.14.11",
     "testcafe": "^0.18.6",
     "testcafe-react-selectors": "^1.0.5"

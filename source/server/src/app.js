@@ -10,9 +10,9 @@ import sanitizer from "express-sanitizer";
 import mongoSantizer from "express-mongo-sanitize";
 import {initRoutes} from "./routes/index";
 import {configureLogger, getLoggerForFile, setRoot} from "./util/loggerUtil";
-const log4jsConfig = require("../../../config/log4js");
-import {ServiceLocator} from "./util/ServiceLocator";
 import {ModelLocator} from "./models/ModelLocator";
+
+const log4jsConfig = require("../../../config/log4js");
 
 setRoot(__dirname);
 configureLogger(log4jsConfig);
@@ -23,12 +23,6 @@ const app = express();
 app.use(helmet());
 
 const config = require ("../../../config/db");
-
-// initialize ServiceLocator
-ServiceLocator.getInstance()
-    .setDomain(config.domain)
-    .setPort(config.port);
-
 
 app.use(bodyParser.json({
     parameterLimit: 100000,

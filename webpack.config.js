@@ -11,14 +11,14 @@ const ExtractStylePlugin = new ExtractTextPlugin({
 let config = require("./config/db.js");
 
 process.env.BABEL_ENV = "development";
-process.env.NODE_ENV = "development";
+// process.env.NODE_ENV = "dev";
 // use DB_URI = "mongodb://mongo:27017/local" for docker-compose
-process.env.DB_URI = 'mongodb://127.0.0.1:27017/local';
+// process.env.DB_URI = 'mongodb://127.0.0.1:27017/local';
 
 module.exports = {
     bail: true,
     devtool: "source-map",
-    watch: true,
+    watch: false,
     node: {
         fs: 'empty',
         module: 'empty'

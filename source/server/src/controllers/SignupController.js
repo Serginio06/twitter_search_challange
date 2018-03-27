@@ -8,7 +8,7 @@ import {ModelLocator} from "../models/ModelLocator";
 import {VERIFY_USER_EMAIL} from "../constants/emailTarget";
 // import {sendEmail} from "../util/emailUtil";
 // import {getVerifyEmailData} from "../converter/letterData";
-import {ServiceLocator} from "../util/ServiceLocator";
+// import {ServiceLocator} from "../util/ServiceLocator";
 
 const logger = getLoggerForFile(__filename);
 
