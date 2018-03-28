@@ -1,0 +1,14 @@
+.demo-card-wide.mdl-card {
+  width: 512px;
+}
+.demo-card-wide > .mdl-card__title {
+  color: #fff;
+  height: 176px;
+  //background: url('./media/twitterWelcome.jpg') center / cover;
+  background-position: 0 -20px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}

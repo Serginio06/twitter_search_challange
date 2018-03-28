@@ -41,7 +41,7 @@ export default (state, action) => {
                 ...state,
                 isSpinner: false,
                 formAlert: {
-                    style: 'alert-info',
+                    style: 'alert alert-warning',
                     msg: 'Error during receiving data from server',
                 },
             };
@@ -50,7 +50,7 @@ export default (state, action) => {
                 ...state,
                 isSpinner: false,
                 formAlert: {
-                    style: 'alert-info',
+                    style: 'alert alert-warning',
                     msg: 'Cannot connect to the server. Please try again later',
                 },
             };
@@ -59,7 +59,7 @@ export default (state, action) => {
                 ...state,
                 isSpinner: false,
                 formAlert: {
-                    style: 'alert-info',
+                    style: 'alert alert-warning',
                     msg: 'No tweets with these hashtags',
                 },
             };

@@ -1,19 +1,24 @@
 
-.trades .table-ts {
+.trades {
+  display: flex;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .mdl-card__title {
     display: flex;
-    margin-top: 30px;
+    justify-content: center;
+    //background-color: #3f51b5;
+    //background-color: #5C6BC0;
+    background-color: #3949AB;
+    height: 60px;
+  }
+
+  &__table {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
-
-/*.form-group label {*/
-    /*padding-left: 10px;*/
-    /*text-align: left;*/
-/*}*/
-
-/*.Select-value {*/
-    /*text-align: left;*/
-/*}*/
-
-/*.Select .Select-menu-outer {*/
-    /*z-index: 10;*/
-/*}*/

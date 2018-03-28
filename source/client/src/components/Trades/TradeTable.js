@@ -27,12 +27,11 @@ class TradeTable extends Component {
             ));
 
         return (
-            <div className="card text-center">
-                <h4 className="card-header text-success">Tweets</h4>
-                <div className="card-body">
+            <div>
+                <div>
                     <h5 className="card-title text-info">Last 15 tweets with hashtags: <b>{title}</b></h5>
 
-                    <table className="table table-striped table-bordered">
+                    <table className="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
                         <thead>
                         <tr>
                             {renderTblHeader}

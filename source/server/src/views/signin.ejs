@@ -3,70 +3,48 @@
 <head>
     <% include ./template/head.ejs %>
     <style>
-        .hiddenBlock {
-            display: none;
-        }
-
-        #alertDialog {
-            /*padding-left: 25px;*/
-            text-align: center;
-        }
-
-        .modal-dialog {
+        .mdl-dialog {
             min-width: 400px;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="./build/media/dialog-polyfill.css" />
 </head>
 <body>
 
 <noscript>You need to enable JavaScript to run this app.</noscript>
 
-<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="false" id="myModal">
-    <div class="modal-dialog" role="document">
+<dialog class="mdl-dialog">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Login or Sign up</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!--<form>-->
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="InputEmail"
-                           aria-describedby="emailHelp" placeholder="Enter email">
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email
-                        with
-                        anyone else.
-                    </small>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="InputPassword"
-                           placeholder="Password">
-                </div>
-                <button type="button" class="btn btn-primary" onclick=loginAction()>Login</button>
-                <button type="button" class="btn btn-primary" onclick=signupAction()>Sign up
-                </button>
-                <!--</form>-->
-            </div>
-            <div class="modal-footer">
-
-                <div class="hiddenBlock" id="alertDialog" role="alert">
-                    <strong>Danger!</strong> Indicates a dangerous or potentially negative action.
-                </div>
-            </div>
+    <h4 class="mdl-dialog__title">Login or Sign up</h4>
+    <div class="mdl-dialog__content">
+        <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="email" id="InputEmail">
+            <label class="mdl-textfield__label" for="sample1">Enter email</label>
         </div>
-
+        <div class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="password" id="InputPassword">
+            <label class="mdl-textfield__label" for="sample1">Password</label>
+        </div>
     </div>
-</div>
+    <div class="mdl-dialog__actions">
+        <button type="button" class="mdl-button" onclick=loginAction()>Login</button>
+        <button type="button" class="mdl-button close" onclick=signupAction()>Sign up</button>
+    </div>
+    <div class="" id="alertDialog" role="alert">
+    </div>
+</dialog>
+
 
 </body>
 
+<script src="./build/assets/dialog-polyfill.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<!--<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>-->
+<script defer src="./build/assets/vendor/material.min.js"></script>
+
 <script>
+
+
 
     function signupAction() {
         const url = "/registerUser";
@@ -157,7 +135,16 @@
 
 
         $(window).on('load',function(){
-        $('#myModal').modal('show');
+
+            $(".close-alert").click(function(e){
+                $(this).parent().remove();
+                e.preventDefault();
+            });
+
+            let dialog = document.querySelector('dialog');
+            dialogPolyfill.registerDialog(dialog);
+            // Now dialog acts like a native <dialog>.
+            dialog.showModal();
     });
 
 </script>
